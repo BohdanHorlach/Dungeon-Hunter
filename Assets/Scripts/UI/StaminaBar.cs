@@ -6,7 +6,7 @@ public class StaminaBar : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private StaminaHandler staminaHandler;
 
-    private void Awake()
+    private void Start()
     {
         slider.maxValue = staminaHandler.MaxStamina;
         slider.value = staminaHandler.CurrentStamina;

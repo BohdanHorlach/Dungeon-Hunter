@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerAnimatorHandler : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private StaminaHandler staminaHandler;
+    [SerializeField] private PlayerStaminaManagment playerStaminaManagment;
     [SerializeField] private PlayerInputDetector inputDetector;
     [SerializeField] private HealthHandler helthHandler;
     [SerializeField] private DetectorHitFromAttack[] detectorsHitFromAttacks;
@@ -24,8 +26,16 @@ public class PlayerAnimatorHandler : MonoBehaviour
     private void Awake()
     {
         handlers = new Action[] {
-            () => { if (isRoll == false) animator.SetTrigger("Roll"); },
-            () => animator.SetTrigger("Attack"),
+            () => 
+            { 
+                if (isRoll == false && staminaHandler.CurrentStamina > playerStaminaManagment.RollPower)
+                    animator.SetTrigger("Roll"); 
+            },
+            () => 
+            {
+                if(staminaHandler.CurrentStamina > playerStaminaManagment.AttackPower)
+                    animator.SetTrigger("Attack"); 
+            },
             () => animator.SetTrigger("Hit"),
             () => animator.SetTrigger("Kickback"),
         };

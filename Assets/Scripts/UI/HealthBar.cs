@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +6,11 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Slider slider;
     [SerializeField] private HealthHandler healthHandler;
-    [SerializeField] private float speedTransition;
 
 
-    private void Awake()
+    private void Start()
     {
+        slider.minValue = 0;
         slider.maxValue = healthHandler.MaxHealthValue;
         slider.value = healthHandler.CurrentHelth;
     }
@@ -31,23 +30,7 @@ public class HealthBar : MonoBehaviour
 
     private void SetHealth()
     {
-        StartCoroutine(UpdateSlider(healthHandler.CurrentHelth));
+        slider.value = healthHandler.CurrentHelth;
     }
 
-
-    private IEnumerator UpdateSlider(float newHelth)
-    {
-        float elapsed = 0.0f;
-        float startExp = slider.value;
-
-        while (elapsed < speedTransition)
-        {
-            float duration = elapsed / speedTransition;
-            elapsed += Time.deltaTime;
-            slider.value = Mathf.Lerp(startExp, newHelth, duration);
-            yield return null;
-        }
-
-        slider.value = newHelth;
-    }
 }

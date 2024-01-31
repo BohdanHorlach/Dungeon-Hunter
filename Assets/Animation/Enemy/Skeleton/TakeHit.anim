@@ -24,7 +24,7 @@ AnimationClip:
       value: {fileID: -848801428, guid: 3f0fd0fb0dd2cd049a2057bbb47723d3, type: 3}
     - time: 0.016666668
       value: {fileID: 541150201, guid: 3f0fd0fb0dd2cd049a2057bbb47723d3, type: 3}
-    - time: 0.083333336
+    - time: 0.16666667
       value: {fileID: -840555159, guid: 3f0fd0fb0dd2cd049a2057bbb47723d3, type: 3}
     - time: 0.5
       value: {fileID: 1609222665, guid: 3f0fd0fb0dd2cd049a2057bbb47723d3, type: 3}
@@ -87,7 +87,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.5
-    functionName: KeepMoving
+    functionName: ResetActive
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

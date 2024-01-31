@@ -11,7 +11,6 @@ public class StaminaHandler : MonoBehaviour
 
     private float stamina;
     private float maxStamina;
-    private Coroutine coroutine;
 
 
     public event Action<float> ChangeStamina;
@@ -28,7 +27,7 @@ public class StaminaHandler : MonoBehaviour
 
     private void StartRecovery()
     {
-        coroutine = StartCoroutine(Recovery());
+        StartCoroutine("Recovery");
     }
 
 
@@ -38,16 +37,14 @@ public class StaminaHandler : MonoBehaviour
         {
             stamina = Mathf.Clamp(stamina + recoveryRate, stamina, maxStamina);
             ChangeStamina?.Invoke(stamina);
-            Debug.Log(stamina);
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
 
     public void Action(float force)
     {
-        if(coroutine != null)
-            StopCoroutine(coroutine);
+        StopCoroutine("Recovery");
 
         stamina = Mathf.Clamp(stamina - force, 0, stamina);
         Timer.StartTimer(pauseTime, StartRecovery);
