@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51013748a76e20744ba538c162a3cb63, type: 3}
-  m_Name: Skeleton
+  m_Name: Goblin
   m_EditorClassIdentifier: 
-  health: 60
+  health: 40
   stamina: 0
-  damage: 35
-  exp: 100
+  damage: 0
+  exp: 150

@@ -6,6 +6,7 @@ public class DetectorHitFromAttack : MonoBehaviour
 {
     [SerializeField] private CharacterCharacteristics character;
     [SerializeField] private string friendTag;
+    [SerializeField] private bool isCountedExp = true;
 
 
     public event Action OnKickback;
@@ -42,6 +43,7 @@ public class DetectorHitFromAttack : MonoBehaviour
 
     private void Kill(int exp)
     {
-        character.Exp += exp;
+        if(isCountedExp == true)
+            character.Exp += exp;
     }
 }

@@ -74,7 +74,7 @@ Transform:
   m_GameObject: {fileID: 2304127891599019199}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.81, y: 1.54, z: 0.050608546}
+  m_LocalPosition: {x: -0.7, y: 0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -97,7 +97,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -116,9 +116,10 @@ GameObject:
   - component: {fileID: 5254479805882531727}
   - component: {fileID: 4685792524650973871}
   - component: {fileID: 2176027751006806779}
+  - component: {fileID: 3303887375707002289}
   m_Layer: 0
   m_Name: DamageZone
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +168,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.08733559, y: -0.124138355}
@@ -200,6 +201,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3303887375707002289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122944787459012862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c7b3f812f157846ac3304b23454359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characteristics: {fileID: 11400000, guid: c5bc47a74653fab46925d52c752efe6f, type: 2}
 --- !u!1 &4546617978989507007
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +225,9 @@ GameObject:
   - component: {fileID: 2470087021932613313}
   - component: {fileID: 5466898257737800909}
   - component: {fileID: 186629866187801906}
+  - component: {fileID: 520533717280476535}
   - component: {fileID: 5418135235294474966}
+  - component: {fileID: 5791776347752444114}
   m_Layer: 0
   m_Name: Goblin_Base
   m_TagString: Untagged
@@ -309,6 +325,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &520533717280476535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4546617978989507007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1b5c022d655554393a23ce906e39b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 186629866187801906}
+  helthHandler: {fileID: 3303887375707002289}
 --- !u!114 &5418135235294474966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183fcfc9eae8acc49815cb009cfd2cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 186629866187801906}
+  animator: {fileID: 520533717280476535}
   triggersOfAttackForAnimator:
   - MeleeAttack
   - DodgeAttack
@@ -329,7 +359,21 @@ MonoBehaviour:
   agent: {fileID: 2230654032008969818}
   minTimeOfInactivy: 0.5
   maxTimeOfInactivy: 5
-  meleeDistance: 1.5
+  meleeDistance: 2
+--- !u!114 &5791776347752444114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4546617978989507007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a32f66f99fb3654793c2b620dc2214a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 186629866187801906}
+  mainGameObject: {fileID: 2304127891599019199}
 --- !u!1 &4885021660786859339
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6257122571025024280}
   - component: {fileID: 472566407148805916}
+  - component: {fileID: 8446930672460756324}
   m_Layer: 0
   m_Name: DodgeAttack
   m_TagString: Untagged
@@ -391,7 +436,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -412,6 +457,21 @@ PolygonCollider2D:
       - {x: 1.6810237, y: -0.69139}
       - {x: 2.0996485, y: -0.417502}
   m_UseDelaunayMesh: 0
+--- !u!114 &8446930672460756324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885021660786859339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8982ea2ef52c4d4c9bdf86c5d180d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: c5bc47a74653fab46925d52c752efe6f, type: 2}
+  friendTag: Enemy
+  isCountedExp: 0
 --- !u!1 &5380259231840384502
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 202101154060966186}
   - component: {fileID: 3651836542440745962}
+  - component: {fileID: 4596605381637204166}
   m_Layer: 0
   m_Name: NormalAttack
   m_TagString: Untagged
@@ -692,3 +753,18 @@ PolygonCollider2D:
       - {x: -1.0249672, y: 0.5719906}
       - {x: -0.8396878, y: 0.2446639}
   m_UseDelaunayMesh: 0
+--- !u!114 &4596605381637204166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935382438752829141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8982ea2ef52c4d4c9bdf86c5d180d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: c5bc47a74653fab46925d52c752efe6f, type: 2}
+  friendTag: Enemy
+  isCountedExp: 0

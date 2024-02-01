@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerInputDetector inputDetector;
-    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Rigidbody2D playerBody;
     [SerializeField, Min(0)] private float speedMove;
     [SerializeField, Min(0)] private float rollForce;
 
@@ -30,7 +30,9 @@ public class PlayerMovement : MonoBehaviour
         if (isMoved == false)
             return;
 
-        playerTransform.position += directional * speedMove * Time.deltaTime;
+        Vector3 resultPosition = directional * speedMove * Time.deltaTime;
+
+        playerBody.MovePosition(playerBody.transform.position + resultPosition);
     }
 
 
@@ -54,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     {
         while (true)
         {
-            playerTransform.position += direction * Time.deltaTime;
+            playerBody.MovePosition(playerBody.transform.position + direction * Time.deltaTime);
             yield return null;
         }
     }
