@@ -68,9 +68,10 @@ GameObject:
   - component: {fileID: 1260977282744437457}
   - component: {fileID: 7176837494092158051}
   - component: {fileID: 5197622557787252410}
+  - component: {fileID: 2279424076617421890}
   m_Layer: 0
   m_Name: DamageZone
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +120,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -152,6 +153,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2279424076617421890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955945478354702871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c7b3f812f157846ac3304b23454359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characteristics: {fileID: 11400000, guid: e21871218ea0fc444b0a677aa97cdb99, type: 2}
 --- !u!1 &2700863814737053433
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +339,9 @@ GameObject:
   - component: {fileID: 5373022964055005596}
   - component: {fileID: 1569052159147238141}
   - component: {fileID: 4304975815484970910}
+  - component: {fileID: 1628685171567318044}
   - component: {fileID: 3997820107673667326}
+  - component: {fileID: 5339735916409303529}
   m_Layer: 0
   m_Name: FlyingEye_Base
   m_TagString: Untagged
@@ -423,6 +439,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1628685171567318044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145955080287874049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1b5c022d655554393a23ce906e39b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4304975815484970910}
+  helthHandler: {fileID: 2279424076617421890}
 --- !u!114 &3997820107673667326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a60ac0d6b81dda458858cf8d5d57cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 4304975815484970910}
+  animator: {fileID: 1628685171567318044}
   triggersOfAttackForAnimator:
   - Attack
   - SpinAttack
@@ -446,6 +476,20 @@ MonoBehaviour:
   meleeDistance: 2
   movedTransform: {fileID: 4825555811621726437}
   speedMoving: 20
+--- !u!114 &5339735916409303529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145955080287874049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a32f66f99fb3654793c2b620dc2214a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4304975815484970910}
+  mainGameObject: {fileID: 178348102628705955}
 --- !u!1 &7540325404882757040
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5090877825463708747}
   - component: {fileID: 2373667641383775927}
+  - component: {fileID: 3388746267862038251}
   m_Layer: 0
   m_Name: HitZone
   m_TagString: Untagged
@@ -507,12 +552,27 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.4, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3388746267862038251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540325404882757040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8982ea2ef52c4d4c9bdf86c5d180d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: c5bc47a74653fab46925d52c752efe6f, type: 2}
+  friendTag: Enemy
+  isCountedExp: 0
 --- !u!1 &7709094007792201995
 GameObject:
   m_ObjectHideFlags: 0

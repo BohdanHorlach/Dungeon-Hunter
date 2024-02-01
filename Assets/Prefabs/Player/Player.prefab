@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: e674017d18d39214d8ca54389f569b7a, type: 2}
   friendTag: Untagged
+  isCountedExp: 1
 --- !u!1 &5129919922766375207
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +167,7 @@ GameObject:
   - component: {fileID: 1608208952364352474}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -272,8 +273,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 5.4545455, y: 1.8181819}
+  m_Offset: {x: -0.25, y: 0}
+  m_Size: {x: 1, y: 1.8}
   m_Direction: 0
 --- !u!50 &1710411181023160639
 Rigidbody2D:
@@ -301,7 +302,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &1352813166574252371
 Animator:
   serializedVersion: 5
@@ -356,9 +357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputDetector: {fileID: 8165252454625802481}
-  playerTransform: {fileID: 849175922314207196}
+  playerBody: {fileID: 1710411181023160639}
   speedMove: 5
-  rollForce: 3
+  rollForce: 10
 --- !u!114 &8165252454625802481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,6 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: e674017d18d39214d8ca54389f569b7a, type: 2}
   friendTag: Untagged
+  isCountedExp: 1
 --- !u!1 &9089517121189251139
 GameObject:
   m_ObjectHideFlags: 0

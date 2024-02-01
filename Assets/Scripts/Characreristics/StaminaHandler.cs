@@ -9,6 +9,7 @@ public class StaminaHandler : MonoBehaviour
     [SerializeField] private float recoveryRate;
     [SerializeField] private float pauseTime;
 
+    private const float SECONDS_WAIT_TO_COROUTINE = 0.1f;
     private float stamina;
     private float maxStamina;
 
@@ -37,7 +38,7 @@ public class StaminaHandler : MonoBehaviour
         {
             stamina = Mathf.Clamp(stamina + recoveryRate, stamina, maxStamina);
             ChangeStamina?.Invoke(stamina);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(SECONDS_WAIT_TO_COROUTINE);
         }
     }
 
