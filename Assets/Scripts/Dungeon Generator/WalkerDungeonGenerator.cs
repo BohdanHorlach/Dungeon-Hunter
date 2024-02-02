@@ -22,7 +22,6 @@ public class WalkerDungeonGenerator : MonoBehaviour
     [SerializeField, Range(1, 4)] private int maxCountOfCorridors;
     [SerializeField, Min(1)] private int lengthCorridors;
     [SerializeField, Min(1)] private int widthCorridors;
-    [SerializeField, Min(1)] private int density;
     [SerializeField] private bool isGenerationAlongEdges = false;
 
 
@@ -105,7 +104,7 @@ public class WalkerDungeonGenerator : MonoBehaviour
 
     private Vector2Int CorridorGeneration(Vector2Int startPosition, Vector2Int direction)
     {
-        var resultCorridor = ProceduralGenerator.GenerateToDirection(startPosition, direction, lengthCorridors, widthCorridors, density);
+        var resultCorridor = ProceduralGenerator.GenerateToDirection(startPosition, direction, lengthCorridors, widthCorridors);
 
         Vector2Int endPoint = resultCorridor.Item2;
         HashSet<Vector2Int> corridor = resultCorridor.Item1;

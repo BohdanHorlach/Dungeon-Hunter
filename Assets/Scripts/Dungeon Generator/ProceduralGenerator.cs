@@ -21,7 +21,7 @@ public class ProceduralGenerator
     }
 
 
-    public static (HashSet<Vector2Int>, Vector2Int) GenerateToDirection(Vector2Int start, Vector2Int direction, int length, int width, int density)
+    public static (HashSet<Vector2Int>, Vector2Int) GenerateToDirection(Vector2Int start, Vector2Int direction, int length, int width)
     {
         HashSet<Vector2Int> result = new HashSet<Vector2Int>();
         Vector2Int currentPosition = start;
@@ -30,11 +30,8 @@ public class ProceduralGenerator
         {
             for (int j = -width; j <= width; j++)
             {
-                for(int k = 0; k < density; k++)
-                {
-                    Vector2Int asideOffset = Direction.GetRandomMainDirection() * j;
-                    result.Add(currentPosition + asideOffset);
-                }
+                Vector2Int asideOffset = Direction.GetRandomMainDirection() * j;
+                result.Add(currentPosition + asideOffset);
             }
             result.Add(currentPosition);
             currentPosition += direction;

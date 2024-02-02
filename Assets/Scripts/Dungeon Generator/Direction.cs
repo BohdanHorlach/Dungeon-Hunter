@@ -3,11 +3,20 @@ using UnityEngine;
 
 public static class Direction
 {
-    private static List<Vector2Int> mainDirectionals = new List<Vector2Int> {
+    private static List<Vector2Int> mainDirections = new List<Vector2Int> {
         new Vector2Int(0, 1),
         new Vector2Int(0, -1),
         new Vector2Int(1, 0),
         new Vector2Int(-1, 0)    
+    };
+
+
+    private static List<Vector2Int> cornerDirections = new List<Vector2Int>
+    {
+        new Vector2Int(1, 1),
+        new Vector2Int(1, -1),
+        new Vector2Int(-1, 1),
+        new Vector2Int(-1, -1)
     };
 
 
@@ -27,9 +36,10 @@ public static class Direction
     private static Vector3 tilemapOffset = new Vector3(0.5f, 0.5f);
 
 
-    public static List<Vector2Int> MainDirectionls { get => mainDirectionals; }
+    public static List<Vector2Int> MainDirections { get => mainDirections; }
+    public static List<Vector2Int> CornerDirections { get => cornerDirections; }
 
-    public static List<Vector2Int> EdgeDirection { get => edgeDirection; }
+    public static List<Vector2Int> EdgeDirections { get => edgeDirection; }
 
     public static Vector3 TilemapOffset { get => tilemapOffset; }
 
@@ -42,7 +52,7 @@ public static class Direction
 
     public static Vector2Int GetRandomMainDirection()
     {
-        return GetRandomFromList(mainDirectionals);
+        return GetRandomFromList(mainDirections);
     }
 
 

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: e674017d18d39214d8ca54389f569b7a, type: 2}
-  recoveryRate: 0.5
+  recoveryRate: 1
   pauseTime: 3
 --- !u!1 &1503770442481861919
 GameObject:
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaHandler: {fileID: 5555058706618384746}
   attackPower: 10
-  rollPower: 25
+  rollPower: 15
 --- !u!1 &6470888764700971060
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class InteractFiller : MonoBehaviour
 
     private bool IsEdgeOfArea(Vector2Int position)
     {
-        foreach(Vector2Int edge in Direction.EdgeDirection)
+        foreach(Vector2Int edge in Direction.EdgeDirections)
         {
             Vector3Int edgePosition = (Vector3Int)(position + edge);
 
