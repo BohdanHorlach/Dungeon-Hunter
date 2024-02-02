@@ -82,7 +82,7 @@ public class WalkerDungeonGenerator : MonoBehaviour
             RoomGeneretion(roomPos);
         }
 
-        tilemapFiller.Fill((IEnumerable<Vector3Int>)dungeonMap);
+        tilemapFiller.Fill(dungeonMap);
         interactFiller.Fill(dungeonMap, sizeDungeon);
         navMeshSurface.BuildNavMesh();
     }

@@ -31,11 +31,11 @@ public class ExperienceCounter : MonoBehaviour
 
     private void StartTransition(int exp)
     {
-        StartCoroutine(UpdateSlider(exp));
+        StartCoroutine(UpdateCounter(exp));
     }
 
 
-    private IEnumerator UpdateSlider(int newExp)
+    private IEnumerator UpdateCounter(int newExp)
     {
 
         float elapsed = 0.0f;

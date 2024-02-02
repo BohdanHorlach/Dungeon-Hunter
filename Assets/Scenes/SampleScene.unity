@@ -373,10 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 337179778}
   interactSettings:
-  - {fileID: 11400000, guid: 95117999404dbb044b985e2ed0a1d792, type: 2}
-  - {fileID: 11400000, guid: 977c1a3828d46b04599360faa2f2e252, type: 2}
-  - {fileID: 11400000, guid: 1830b5e72ae8c2c44b55354062d19530, type: 2}
-  - {fileID: 11400000, guid: 64080b4bff1aed04aaed38cfe46c85a2, type: 2}
+  - {fileID: 11400000, guid: 8de5e824a55765c40b2e0ae8ccb7f212, type: 2}
   minDistanceFromCenter: 10
 --- !u!1 &207142508
 GameObject:
@@ -2347,8 +2344,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapGround: {fileID: 337179778}
   tilemapWalls: {fileID: 635400744}
-  tileToGround: {fileID: 11400000, guid: bfc6af082a833f0419c40688531d81cd, type: 2}
-  tileToWall: {fileID: 11400000, guid: 9309f15dc8e34c64cb34d4ad9869a69c, type: 2}
+  tileToGround: {fileID: 11400000, guid: 3c20fc0cbff6185499e33120f21df05c, type: 2}
+  tileToWall: {fileID: 11400000, guid: 8f97c4860ff3b5844baedf18393f0264, type: 2}
 --- !u!1 &1895190139
 GameObject:
   m_ObjectHideFlags: 0
