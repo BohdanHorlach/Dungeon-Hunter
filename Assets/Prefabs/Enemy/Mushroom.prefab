@@ -463,6 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7420177841036989301}
   - component: {fileID: 3134634453027323622}
+  - component: {fileID: 1906599535732764445}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -510,6 +511,19 @@ NavMeshAgent:
   m_BaseOffset: 1.07
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1906599535732764445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814125661726529659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819431d42f00a384094ab1cff2ed152a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 5475738745485263898}
 --- !u!1 &8888291364301178776
 GameObject:
   m_ObjectHideFlags: 0

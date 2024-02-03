@@ -34,7 +34,7 @@ public class SpawnInteractSettings : ScriptableObject
             Vector2Int spawnPos = positions[randomSpawnIndex];
 
             spawnedPosition.Add(spawnPos);
-            GameObject gameObject = Instantiate(interactPrefabs[randomPrefabIndex], tilemap.CellToWorld(((Vector3Int)spawnPos)) + Direction.TilemapOffset, Quaternion.identity);
+            GameObject gameObject = Instantiate(interactPrefabs[randomPrefabIndex], tilemap.CellToWorld((Vector3Int)spawnPos), Quaternion.identity);
             spawnedObjects.Add(gameObject);
         }
 

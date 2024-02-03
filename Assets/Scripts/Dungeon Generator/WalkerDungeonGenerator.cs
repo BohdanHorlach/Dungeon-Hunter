@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class WalkerDungeonGenerator : MonoBehaviour
 {
-    [Header("Fillers")]
+    [Header("Filler")]
     [SerializeField] private TilemapFiller tilemapFiller;
-    [SerializeField] private InteractFiller interactFiller;
 
 
     [Header("NavMesh")]
@@ -81,8 +80,7 @@ public class WalkerDungeonGenerator : MonoBehaviour
             RoomGeneretion(roomPos);
         }
 
-        tilemapFiller.Fill(dungeonMap);
-        interactFiller.Fill(dungeonMap, sizeDungeon);
+        tilemapFiller.Fill(dungeonMap, sizeDungeon);
         navMeshSurface.BuildNavMesh();
     }
 

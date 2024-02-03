@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4164432657671551170}
   - component: {fileID: 8351307202765117136}
+  - component: {fileID: 6633315025874294806}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -105,6 +106,19 @@ NavMeshAgent:
   m_BaseOffset: 0.71
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6633315025874294806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304127891599019199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819431d42f00a384094ab1cff2ed152a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 5466898257737800909}
 --- !u!1 &4122944787459012862
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class TilemapFiller : MonoBehaviour
 {
+    [SerializeField] private InteractFiller interactFiller;
     [SerializeField] private Tilemap tilemapGround;
     [SerializeField] private Tilemap tilemapWalls;
     [SerializeField] private TileBase[] tilesToGround;
@@ -83,11 +84,12 @@ public class TilemapFiller : MonoBehaviour
     }
 
 
-    public void Fill(IEnumerable<Vector2Int> positions)
+    public void Fill(IEnumerable<Vector2Int> positions, int sizeMap)
     {
         Cleaning();
 
         FillToGround(positions);
+        interactFiller.Fill(positions, sizeMap);
 
         IEnumerable<Vector2Int> positionOfHolesAndIrregularities = FindWalls(positions);
 
