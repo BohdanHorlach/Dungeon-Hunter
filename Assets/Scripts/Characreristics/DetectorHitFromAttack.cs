@@ -5,9 +5,11 @@ using UnityEngine;
 public class DetectorHitFromAttack : MonoBehaviour
 {
     [SerializeField] private CharacterCharacteristics character;
+    [SerializeField] private ExpHandler expHandler;
     [SerializeField] private string friendTag;
     [SerializeField] private bool isCountedExp = true;
 
+    private Collider2D target;
 
     public event Action OnKickback;
 
@@ -17,17 +19,23 @@ public class DetectorHitFromAttack : MonoBehaviour
         if (collision.tag == friendTag)
             return;
 
-        if (collision.tag == "Shield")
+        target = collision;
+
+        Hit();
+    }
+
+
+    private void Hit()
+    {
+        HealthHandler healthHandler;
+        if (target.TryGetComponent<HealthHandler>(out healthHandler) != true)
+            return;
+
+        if (target.tag == "Shield")
         {
             OnKickback?.Invoke();
             return;
         }
-
-        HealthHandler healthHandler;
-
-        if (collision.TryGetComponent<HealthHandler>(out healthHandler) != true)
-            return;
-
 
         healthHandler.Death += Kill;
         Attack(healthHandler);
@@ -41,9 +49,10 @@ public class DetectorHitFromAttack : MonoBehaviour
     }
 
 
-    private void Kill(int exp)
+    private void Kill()
     {
-        if(isCountedExp == true)
-            character.Exp += exp;
+        ExpHandler targetExpHandler;
+        if(target.TryGetComponent<ExpHandler>(out targetExpHandler) == true && isCountedExp == true)
+            expHandler.AddExp(targetExpHandler.Exp);
     }
 }

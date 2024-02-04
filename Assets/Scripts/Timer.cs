@@ -14,12 +14,6 @@ public static class Timer
     }
 
 
-    public static void StartTimer(float time, System.Action action)
-    {
-        stub.StartCoroutine(RunTimer(time, action));
-    }
-
-
     private static IEnumerator RunTimer(float time, System.Action callback)
     {
         yield return new WaitForSeconds(time);
@@ -27,4 +21,11 @@ public static class Timer
         if(callback != null)
             callback();
     }
+
+
+    public static void StartTimer(float time, System.Action action)
+    {
+        stub.StartCoroutine(RunTimer(time, action));
+    }
+
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ExperienceCounter : MonoBehaviour
 {
-    [SerializeField] private CharacterCharacteristics player;
+    [SerializeField] private ExpHandler player;
     [SerializeField] private TextMeshProUGUI counter;
     [SerializeField, Min(0.1f)] private float speedTransition = 0.5f;
 

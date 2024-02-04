@@ -9,6 +9,7 @@ public class PlayerAnimatorHandler : MonoBehaviour
     [SerializeField] private PlayerStaminaManagment playerStaminaManagment;
     [SerializeField] private PlayerInputDetector inputDetector;
     [SerializeField] private HealthHandler helthHandler;
+    [SerializeField] private ExpHandler expHandler;
     [SerializeField] private DetectorHitFromAttack[] detectorsHitFromAttacks;
 
     private string[] triggersName = new string[] {
@@ -22,6 +23,7 @@ public class PlayerAnimatorHandler : MonoBehaviour
     private bool isFacingRight = true;
     private bool isRoll = false;
 
+    public event Action GameOver;
 
     private void Awake()
     {
@@ -38,7 +40,8 @@ public class PlayerAnimatorHandler : MonoBehaviour
             },
             () => animator.SetTrigger("Hit"),
             () => animator.SetTrigger("Kickback"),
-        };
+            () => animator.SetTrigger("Death"),
+    };
     }
 
 
@@ -48,7 +51,8 @@ public class PlayerAnimatorHandler : MonoBehaviour
         inputDetector.RollDetected += handlers[0];
         inputDetector.AttackDetected += handlers[1];
         helthHandler.DamageReceived += handlers[2];
-        helthHandler.Death += Death;
+        helthHandler.Death += handlers[4];
+        helthHandler.Death += expHandler.ResetExp;
 
         foreach (DetectorHitFromAttack detector in detectorsHitFromAttacks)
             detector.OnKickback += handlers[3];
@@ -60,7 +64,8 @@ public class PlayerAnimatorHandler : MonoBehaviour
         inputDetector.RollDetected -= handlers[0];
         inputDetector.AttackDetected -= handlers[1];
         helthHandler.DamageReceived -= handlers[2];
-        helthHandler.Death -= Death;
+        helthHandler.Death -= handlers[4];
+        helthHandler.Death -= expHandler.ResetExp;
 
         foreach (DetectorHitFromAttack detector in detectorsHitFromAttacks)
             detector.OnKickback -= handlers[3];
@@ -94,12 +99,6 @@ public class PlayerAnimatorHandler : MonoBehaviour
     }
 
 
-    private void Death(int exp)
-    {
-        animator.SetTrigger("Death");
-    }
-
-
     private void SetRoll()
     {
         isRoll = true;
@@ -122,5 +121,11 @@ public class PlayerAnimatorHandler : MonoBehaviour
     {
         foreach(string trigger in triggersName)
             animator.ResetTrigger(trigger);
+    }
+
+
+    private void PlayerDeath()
+    {
+        GameOver?.Invoke();
     }
 }

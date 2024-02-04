@@ -84,12 +84,12 @@ public class TilemapFiller : MonoBehaviour
     }
 
 
-    public void Fill(IEnumerable<Vector2Int> positions, int sizeMap)
+    public void Fill(SpawnInteractSettings[] spawnSetting, IEnumerable<Vector2Int> positions, int sizeMap)
     {
         Cleaning();
 
         FillToGround(positions);
-        interactFiller.Fill(positions, sizeMap);
+        interactFiller.Fill(spawnSetting, positions, sizeMap);
 
         IEnumerable<Vector2Int> positionOfHolesAndIrregularities = FindWalls(positions);
 

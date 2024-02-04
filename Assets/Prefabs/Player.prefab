@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: e674017d18d39214d8ca54389f569b7a, type: 2}
+  expHandler: {fileID: 2854424761583730173}
   friendTag: Untagged
   isCountedExp: 1
 --- !u!1 &5129919922766375207
@@ -355,6 +356,7 @@ MonoBehaviour:
   playerStaminaManagment: {fileID: 1608208952364352474}
   inputDetector: {fileID: 8165252454625802481}
   helthHandler: {fileID: 2801003668872103483}
+  expHandler: {fileID: 2854424761583730173}
   detectorsHitFromAttacks:
   - {fileID: 301261837990629399}
   - {fileID: 2551020449861441865}
@@ -436,6 +438,51 @@ Transform:
   - {fileID: 7814485033980745101}
   m_Father: {fileID: 849175922314207196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6753295720440074316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7352989451377213600}
+  - component: {fileID: 2854424761583730173}
+  m_Layer: 0
+  m_Name: Exp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7352989451377213600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6753295720440074316}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5626938657596487150}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2854424761583730173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6753295720440074316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cddf07ff41ec340bee04b1d9e0beaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characteristics: {fileID: 11400000, guid: e674017d18d39214d8ca54389f569b7a, type: 2}
 --- !u!1 &7601335391241587700
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: e674017d18d39214d8ca54389f569b7a, type: 2}
+  expHandler: {fileID: 2854424761583730173}
   friendTag: Untagged
   isCountedExp: 1
 --- !u!1 &9089517121189251139
@@ -651,5 +699,6 @@ Transform:
   m_Children:
   - {fileID: 8321294237101306078}
   - {fileID: 5197218399424603200}
+  - {fileID: 7352989451377213600}
   m_Father: {fileID: 849175922314207196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

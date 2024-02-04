@@ -1,4 +1,5 @@
 using NavMeshPlus.Components;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,23 +12,36 @@ public class WalkerDungeonGenerator : MonoBehaviour
     [Header("NavMesh")]
     [SerializeField] private NavMeshSurface navMeshSurface;
 
+    private int sizeDungeon;
+    private int countAreaIteration;
+    private int countStepFromArea;
 
-    [Header("Rooms Settings")]
-    [SerializeField, Min(1)] private int sizeDungeon;
-    [SerializeField, Min(1)] private int countAreaIteration;
-    [SerializeField, Min(1)] private int countStepFromArea;
-
-    [Header("Corridors Settings")]
-    [SerializeField, Range(1, 4)] private int maxCountOfCorridors;
-    [SerializeField, Min(1)] private int lengthCorridors;
-    [SerializeField, Min(1)] private int widthCorridors;
-    [SerializeField] private bool isGenerationAlongEdges = false;
+    private int maxCountOfCorridors;
+    private int lengthCorridors;
+    private int widthCorridors;
+    private bool isGenerationAlongEdges = false;
 
 
     private readonly Vector2Int START_POSITION = new Vector2Int(0, 0);
 
     private HashSet<Vector2Int> dungeonMap = new HashSet<Vector2Int>();
     private List<Vector2Int> roomPositions = new List<Vector2Int>();
+
+
+    public event Action LevelGenereted;
+
+
+    private void Initialize(DungeonSettingsForGenereting settings)
+    {
+        sizeDungeon = settings.SizeDungeon;
+        countAreaIteration = settings.CountAreaIteration;
+        countStepFromArea = settings.CountStepFromArea;
+
+        maxCountOfCorridors = settings.MaxCountOfCorridors;
+        lengthCorridors = settings.LengthCorridors;
+        widthCorridors = settings.WidthCorridors;
+        isGenerationAlongEdges = settings.IsGenerationAlongEdges;
+    }
 
 
     private void Cleaning()
@@ -58,7 +72,7 @@ public class WalkerDungeonGenerator : MonoBehaviour
     }
 
 
-    public void CreateLevel()
+    private void CreateLevel(SpawnInteractSettings[] spawnSettings)
     {
         Cleaning();
 
@@ -80,7 +94,7 @@ public class WalkerDungeonGenerator : MonoBehaviour
             RoomGeneretion(roomPos);
         }
 
-        tilemapFiller.Fill(dungeonMap, sizeDungeon);
+        tilemapFiller.Fill(spawnSettings, dungeonMap, sizeDungeon);
         navMeshSurface.BuildNavMesh();
     }
 
@@ -110,5 +124,13 @@ public class WalkerDungeonGenerator : MonoBehaviour
         dungeonMap.UnionWith(corridor);
 
         return endPoint;
+    }
+
+
+    public void Generate(DungeonSettingsForGenereting settings)
+    {
+        Initialize(settings);
+        CreateLevel(settings.InteractSpawnSetting);
+        LevelGenereted?.Invoke();
     }
 }

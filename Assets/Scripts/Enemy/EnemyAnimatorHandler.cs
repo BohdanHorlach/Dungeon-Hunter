@@ -26,7 +26,7 @@ public class EnemyAnimatorHandler : MonoBehaviour
     }
 
 
-    private void Death(int exp)
+    private void Death()
     {
         SetTrigger("Death");
     }

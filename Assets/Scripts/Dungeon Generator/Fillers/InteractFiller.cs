@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 public class InteractFiller : MonoBehaviour
 {
     [SerializeField] private Tilemap tilemap;
-    [SerializeField] private SpawnInteractSettings[] interactSettings;
     [SerializeField] private int minDistanceFromCenter;
 
 
@@ -36,11 +35,12 @@ public class InteractFiller : MonoBehaviour
     }
 
 
-    public void Fill(IEnumerable<Vector2Int> positions, int sizeMap)
+    public void Fill(SpawnInteractSettings[] spawnsSetting, IEnumerable<Vector2Int> positions, int sizeMap)
     {
+
         List<Vector2Int> validPos = GetValidPositionFomDistance(positions);
 
-        foreach (SpawnInteractSettings spawner in interactSettings)
+        foreach (SpawnInteractSettings spawner in spawnsSetting)
         {
             List<Vector2Int> spawnedPositions = spawner.RandomSpawn(validPos, tilemap, sizeMap);
             List<Vector2Int> newValidPos = validPos.Except(spawnedPositions).ToList();

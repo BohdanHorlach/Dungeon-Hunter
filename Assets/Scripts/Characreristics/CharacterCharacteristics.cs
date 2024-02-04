@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 
@@ -13,14 +12,5 @@ public class CharacterCharacteristics : ScriptableObject
     public float Health { get { return health; } }
     public float Stamina { get { return stamina; } }
     public float Damage { get { return damage; } }
-    public int Exp 
-    { 
-        get { return exp; }
-        set { 
-            exp = value;
-            ExpChanged?.Invoke(exp);
-        } 
-    }
-
-    public event Action<int> ExpChanged;
+    public int Exp { get { return exp; } }
 }

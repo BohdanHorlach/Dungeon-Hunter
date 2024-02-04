@@ -11,7 +11,7 @@ public class HealthHandler : MonoBehaviour
 
 
     public event Action DamageReceived;
-    public event Action<int> Death;
+    public event Action Death;
     public float CurrentHelth { get { return helth; } }
     public float MaxHealthValue { get { return maxHealthValue; } }
 
@@ -30,6 +30,6 @@ public class HealthHandler : MonoBehaviour
         DamageReceived?.Invoke();
 
         if (helth == 0)
-            Death?.Invoke(characteristics.Exp);
+            Death?.Invoke();
     }
 }
