@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebd1262e22d1b21408dc02e717cef234, type: 3}
-  m_Name: Skeleton
+  m_Name: Torch
   m_EditorClassIdentifier: 
   interactPrefabs:
-  - {fileID: 7203808392874824492, guid: 87f6437ee79fd864da736bb6cd517d80, type: 3}
-  density: 8
+  - {fileID: 4512606123242626535, guid: a598625a694ceae479c4923a51b236d7, type: 3}
+  density: 20

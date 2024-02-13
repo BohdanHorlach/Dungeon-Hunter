@@ -1,7 +1,8 @@
 using NavMeshPlus.Components;
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WalkerDungeonGenerator : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class WalkerDungeonGenerator : MonoBehaviour
     private List<Vector2Int> roomPositions = new List<Vector2Int>();
 
 
-    public event Action LevelGenereted;
+    public UnityEvent LevelGenereted;
 
 
     private void Initialize(DungeonSettingsForGenereting settings)
@@ -72,7 +73,7 @@ public class WalkerDungeonGenerator : MonoBehaviour
     }
 
 
-    private void CreateLevel(SpawnInteractSettings[] spawnSettings)
+    private IEnumerator CreateLevel(SpawnInteractSettings[] spawnSettings)
     {
         Cleaning();
 
@@ -82,22 +83,23 @@ public class WalkerDungeonGenerator : MonoBehaviour
         {
             List<Vector2Int> directions = GetRandomDirectionsOfCorridors();
 
-            for(int j = 0; j < directions.Count; j++)
+            foreach (Vector2Int direction in directions)
             {
-                Vector2Int newRoomPos = CorridorGeneration(roomPositions[i], directions[j]);
+                Vector2Int newRoomPos = CorridorGeneration(roomPositions[i], direction);
                 roomPositions.Add(newRoomPos);
+                yield return null;
             }
         }
 
-        foreach(Vector2Int roomPos in roomPositions)
+        foreach (Vector2Int roomPos in roomPositions)
         {
             RoomGeneretion(roomPos);
+            yield return null;
         }
 
         tilemapFiller.Fill(spawnSettings, dungeonMap, sizeDungeon);
         navMeshSurface.BuildNavMesh();
     }
-
 
 
     private void RoomGeneretion(Vector2Int roomPosition)
@@ -127,10 +129,16 @@ public class WalkerDungeonGenerator : MonoBehaviour
     }
 
 
-    public void Generate(DungeonSettingsForGenereting settings)
+    private IEnumerator GenerateLevel(DungeonSettingsForGenereting settings)
     {
         Initialize(settings);
-        CreateLevel(settings.InteractSpawnSetting);
-        LevelGenereted?.Invoke();
+        yield return StartCoroutine(CreateLevel(settings.InteractSpawnSetting));
+        LevelGenereted.Invoke();
+    }
+
+
+    public void Generate(DungeonSettingsForGenereting settings)
+    {
+        StartCoroutine(GenerateLevel(settings));
     }
 }

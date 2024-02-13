@@ -749,6 +749,7 @@ GameObject:
   - component: {fileID: 7959922699168836884}
   - component: {fileID: 7440116373206220030}
   - component: {fileID: 6645533009671554510}
+  - component: {fileID: 4477844158832476353}
   m_Layer: 0
   m_Name: DamageZone
   m_TagString: Enemy
@@ -843,6 +844,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51c7b3f812f157846ac3304b23454359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characteristics: {fileID: 11400000, guid: 761bd257b0c62014a91e83d3ac972a08, type: 2}
+--- !u!114 &4477844158832476353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888291364301178776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cddf07ff41ec340bee04b1d9e0beaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characteristics: {fileID: 11400000, guid: 761bd257b0c62014a91e83d3ac972a08, type: 2}

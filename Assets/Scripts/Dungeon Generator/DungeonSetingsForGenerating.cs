@@ -1,6 +1,6 @@
 using UnityEngine;
 
-
+[CreateAssetMenu(fileName = "DungeonSettingsForGenereting", menuName = "Dungeon Hunter/DungeonSettingsForGenereting")]
 public class DungeonSettingsForGenereting : ScriptableObject
 {
     [Header("Rooms Settings")]

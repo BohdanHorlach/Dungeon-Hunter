@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d298542bc689ca478a985760fa0a71b, type: 3}
+  m_Name: Normal Mode
+  m_EditorClassIdentifier: 
+  sizeDungeon: 2
+  countAreaIteration: 50
+  countStepFromArea: 30
+  maxCountOfCorridors: 3
+  lengthCorridors: 25
+  widthCorridors: 2
+  isGenerationAlongEdges: 1
+  interactSpawnSettings:
+  - {fileID: 11400000, guid: 3ec735a2909ce9c45b3a53c12fc4d04e, type: 2}
+  - {fileID: 11400000, guid: 2214b1efdd09e4648a7ed965dbb6e1ec, type: 2}
+  - {fileID: 11400000, guid: 312a5b2391c3b9049af1a169c5dc9852, type: 2}
+  - {fileID: 11400000, guid: ae67bc6f2dc925946b2d250348f62fc7, type: 2}
+  - {fileID: 11400000, guid: 7fd25b6dc90142148ae4eb358e79a2d4, type: 2}

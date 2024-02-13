@@ -117,15 +117,18 @@ public class PlayerAnimatorHandler : MonoBehaviour
     }
 
     
-    private void ResetAnimator()
-    {
-        foreach(string trigger in triggersName)
-            animator.ResetTrigger(trigger);
-    }
-
-
     private void PlayerDeath()
     {
         GameOver?.Invoke();
     }
+
+
+    public void ResetAnimator()
+    {
+        foreach (string trigger in triggersName)
+            animator.ResetTrigger(trigger);
+
+        animator.SetBool("isWalk", false);
+    }
+
 }
