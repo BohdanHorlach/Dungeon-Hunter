@@ -9,13 +9,10 @@ public class AgentMovement : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
 
     private float agentDrift = 0.001f;
-    private Vector2 previousPosition;
-    private bool isFacingRight = true;
 
 
     private void Start()
     {
-        previousPosition = finder.transform.position;
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
@@ -33,41 +30,7 @@ public class AgentMovement : MonoBehaviour
         finder.TargetFound -= SetDestination;
         finder.TargetLeaving -= SetDestination;
     }
-
-
-    private void Update()
-    {
-        SetWalkAnimation();
-    }
-
-
-    private void SetWalkAnimation()
-    {
-        Vector2 actualPosition = agent.transform.position;
-        bool isWalk = actualPosition.Equals(previousPosition) == false;
-
-        SetFlip(actualPosition.x - previousPosition.x);
-
-        animator.SetBool("isWalk", isWalk);
-        previousPosition = actualPosition;
-    }
-
-
-    private void SetFlip(float diferenceFromX)
-    {
-        if (diferenceFromX > 0.0f && isFacingRight == false || diferenceFromX < 0.0f && isFacingRight == true)
-            Flip();
-    }
-
-
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-
-        agent.transform.Rotate(0f, 180f, 0f);
-    }
-
-
+    
 
     private void SetDestination(Vector3 target)
     {
