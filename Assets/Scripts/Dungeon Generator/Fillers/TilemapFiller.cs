@@ -21,8 +21,6 @@ public class TilemapFiller : MonoBehaviour
     }
 
 
-
-    //Key is Position wall, Value is a direction wall.
     private List<Vector2Int> GetWallsFromCoordinates(Vector2Int coordinates)
     {
         List<Vector2Int> directions = Direction.EdgeDirections;
