@@ -15,15 +15,9 @@ public class DisplayToGameplayStatistics : MonoBehaviour
     }
 
 
-    private void OnEnable()
+    private void Update()
     {
-        statistics.StatisticsChange += SetValue;
-    }
-
-
-    private void OnDisable()
-    {
-        statistics.StatisticsChange -= SetValue;
+        SetValue();
     }
 
 

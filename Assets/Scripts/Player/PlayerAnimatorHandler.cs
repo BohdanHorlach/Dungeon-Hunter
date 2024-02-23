@@ -40,7 +40,11 @@ public class PlayerAnimatorHandler : MonoBehaviour
             },
             () => animator.SetTrigger("Hit"),
             () => animator.SetTrigger("Kickback"),
-            () => animator.SetTrigger("Death"),
+            () =>
+	        {
+		        ResetAnimator();
+		        animator.SetBool("Death", true);
+	        },
     };
     }
 
@@ -50,7 +54,7 @@ public class PlayerAnimatorHandler : MonoBehaviour
         inputDetector.MoveDetected += SetWalk;
         inputDetector.RollDetected += handlers[0];
         inputDetector.AttackDetected += handlers[1];
-        helthHandler.DamageReceived += handlers[2];
+        helthHandler.HealthChanged += handlers[2];
         helthHandler.Death += handlers[4];
         helthHandler.Death += expHandler.ResetExp;
 
@@ -63,7 +67,7 @@ public class PlayerAnimatorHandler : MonoBehaviour
     {
         inputDetector.RollDetected -= handlers[0];
         inputDetector.AttackDetected -= handlers[1];
-        helthHandler.DamageReceived -= handlers[2];
+        helthHandler.HealthChanged -= handlers[2];
         helthHandler.Death -= handlers[4];
         helthHandler.Death -= expHandler.ResetExp;
 
@@ -129,6 +133,12 @@ public class PlayerAnimatorHandler : MonoBehaviour
             animator.ResetTrigger(trigger);
 
         animator.SetBool("isWalk", false);
+	    animator.SetBool("Death", false);
     }
 
+
+    public void Revive()
+    {
+	    animator.SetTrigger("Revive");
+    }
 }

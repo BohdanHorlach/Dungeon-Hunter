@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d298542bc689ca478a985760fa0a71b, type: 3}
   m_Name: Hard Mode
   m_EditorClassIdentifier: 
-  sizeDungeon: 3
-  countAreaIteration: 50
-  countStepFromArea: 30
+  sizeDungeon: 4
+  countAreaIteration: 80
+  countStepFromArea: 80
   maxCountOfCorridors: 4
   lengthCorridors: 35
   widthCorridors: 3

@@ -20,14 +20,14 @@ public class EnemyAnimatorHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        helthHandler.DamageReceived += TakeDamage;
+        helthHandler.HealthChanged += TakeDamage;
         helthHandler.Death += Death;
     }
 
 
     private void OnDisable()
     {
-        helthHandler.DamageReceived -= TakeDamage;
+        helthHandler.HealthChanged -= TakeDamage;
         helthHandler.Death -= Death;
     }
 

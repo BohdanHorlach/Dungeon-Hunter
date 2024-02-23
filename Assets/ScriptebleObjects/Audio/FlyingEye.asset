@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706adaa777e411b4990b473505f88516, type: 3}
+  m_Name: FlyingEye
+  m_EditorClassIdentifier: 
+  stepSound: {fileID: 8300000, guid: c4c1bf8ea80e3b6478128eea594b1b70, type: 3}
+  attackSound: {fileID: 8300000, guid: e7ed6ef96c352414ba120ae043354779, type: 3}
+  takeHitSound: {fileID: 8300000, guid: f2b6c8e0a958af243b481576e0c3abb1, type: 3}
+  deathSound: {fileID: 8300000, guid: ff8fb9333eaf506419902613fc63993e, type: 3}

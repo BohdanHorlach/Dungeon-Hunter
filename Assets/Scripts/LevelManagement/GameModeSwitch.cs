@@ -6,6 +6,7 @@ public class GameModeSwitch : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private PlayerInputDetector playerInputDetector;
     [SerializeField] private PlayerAnimatorHandler playerAnimator;
+    [SerializeField] private HealthHandler playerHealthHandler;
     [SerializeField] private LevelLoader loader;
     [SerializeField] private CameraSwitcher cameraSwitcher;
     [SerializeField] private float timeTransition;
@@ -22,13 +23,14 @@ public class GameModeSwitch : MonoBehaviour
 
     private void OnEnable()
     {
-        playerAnimator.GameOver += BackToMainMenu;
+        loader.ShowLoaded += HideUIMenu;
     }
 
 
     private void OnDisable()
     {
         playerAnimator.GameOver -= BackToMainMenu;
+        loader.ShowLoaded -= HideUIMenu;
     }
 
 
@@ -39,12 +41,19 @@ public class GameModeSwitch : MonoBehaviour
     }
 
 
-    private void Transition()
+    private void HideUIMenu()
+    {
+        SetEnabledFromGroup(showedGroupInMenu, false);
+    }
+
+
+    private void TransitionToMenu()
     {
         player.position = new Vector3(0, 0, 0);
+        SetEnabledFromGroup(showedGroupInGame, false);
         SetEnabledFromGroup(showedGroupInMenu, true);
+        playerHealthHandler.Revive();
         playerAnimator.ResetAnimator();
-        cameraSwitcher.Switch();
         loader.HideScreen();
     }
 
@@ -52,16 +61,15 @@ public class GameModeSwitch : MonoBehaviour
     public void BackToMainMenu()
     {
         loader.ShowScreen();
-        SetEnabledFromGroup(showedGroupInGame, false);
         playerInputDetector.enabled = false;
-        Timer.StartTimer(timeTransition, Transition);
+        cameraSwitcher.Switch();
+        Timer.StartTimer(timeTransition, TransitionToMenu);
     }
 
 
-    public void HideMenu()
+    public void SwitchGameMode()
     {
         cameraSwitcher.Switch();
-        SetEnabledFromGroup(showedGroupInMenu, false);
         SetEnabledFromGroup(showedGroupInGame, true);
         playerInputDetector.enabled = true;
     }

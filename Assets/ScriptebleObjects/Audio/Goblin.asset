@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706adaa777e411b4990b473505f88516, type: 3}
+  m_Name: Goblin
+  m_EditorClassIdentifier: 
+  stepSound: {fileID: 8300000, guid: f5720092f3dcbc64c9b54331e30a4e6f, type: 3}
+  attackSound: {fileID: 8300000, guid: e7ed6ef96c352414ba120ae043354779, type: 3}
+  takeHitSound: {fileID: 8300000, guid: 7a4f7d07e9c4a7d479455b74a3f2026e, type: 3}
+  deathSound: {fileID: 8300000, guid: b1a186c36e2ddd640a4c5e6fae0c994e, type: 3}

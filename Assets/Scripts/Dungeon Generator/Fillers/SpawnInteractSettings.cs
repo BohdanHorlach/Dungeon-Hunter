@@ -11,7 +11,7 @@ public class SpawnInteractSettings : ScriptableObject
 
     private List<GameObject> spawnedObjects = new List<GameObject>();
 
-    private void Cleaning()
+    public void Cleaning()
     {
         foreach(GameObject gameObject in spawnedObjects)
         {

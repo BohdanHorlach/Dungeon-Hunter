@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 
@@ -12,15 +11,12 @@ public class GameplayStatistics : ScriptableObject
     public int BestTry { get => bestTry; }
     public int TotalExp { get => totalExp; }
 
-    public event Action StatisticsChange;
-
 
     public void SetBestTry(int value)
     {
         if (bestTry < value)
         {
             bestTry = value;
-            StatisticsChange?.Invoke();
         }
     }
 
@@ -30,7 +26,6 @@ public class GameplayStatistics : ScriptableObject
         if (value > 0)
         {
             totalExp += value;
-            StatisticsChange?.Invoke();
         }
     }
 }

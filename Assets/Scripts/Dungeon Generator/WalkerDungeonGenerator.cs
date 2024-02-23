@@ -45,13 +45,6 @@ public class WalkerDungeonGenerator : MonoBehaviour
     }
 
 
-    private void Cleaning()
-    {
-        dungeonMap.Clear();
-        roomPositions.Clear();
-    }
-
-
     private List<Vector2Int> GetRandomDirectionsOfCorridors()
     {
         List<Vector2Int> resultDirections = new List<Vector2Int>();
@@ -134,6 +127,14 @@ public class WalkerDungeonGenerator : MonoBehaviour
         Initialize(settings);
         yield return StartCoroutine(CreateLevel(settings.InteractSpawnSetting));
         LevelGenereted.Invoke();
+    }
+
+
+    public void Cleaning()
+    {
+        dungeonMap.Clear();
+        roomPositions.Clear();
+        tilemapFiller.ClearEnemy();
     }
 
 

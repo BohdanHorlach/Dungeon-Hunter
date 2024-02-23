@@ -1,9 +1,14 @@
+using System;
 using UnityEngine;
 
 
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+
+
+    public event Action ShowLoaded;
+
 
     public void HideScreen()
     {
@@ -13,6 +18,7 @@ public class LevelLoader : MonoBehaviour
 
     public void ShowScreen()
     {
+        ShowLoaded?.Invoke();
         animator.SetTrigger("ShowLoaded");
     }
 }

@@ -13,12 +13,7 @@ public class TilemapFiller : MonoBehaviour
     [SerializeField, Min(0)] private int smoothing = 3;
 
 
-
-    private void Cleaning()
-    {
-        tilemapGround.ClearAllTiles();
-        tilemapWalls.ClearAllTiles();
-    }
+    private SpawnInteractSettings[] spawnSetting;
 
 
     private List<Vector2Int> GetWallsFromCoordinates(Vector2Int coordinates)
@@ -82,9 +77,30 @@ public class TilemapFiller : MonoBehaviour
     }
 
 
+    public void Clear()
+    {
+        tilemapGround.ClearAllTiles();
+        tilemapWalls.ClearAllTiles();
+
+        ClearEnemy();
+    }
+
+
+    public void ClearEnemy()
+    {
+        if (spawnSetting == null)
+            return;
+
+        foreach (SpawnInteractSettings spawnInfo in spawnSetting)
+            spawnInfo.Cleaning();
+    }
+
+
     public void Fill(SpawnInteractSettings[] spawnSetting, IEnumerable<Vector2Int> positions, int sizeMap)
     {
-        Cleaning();
+        Clear();
+
+        this.spawnSetting = spawnSetting;
 
         FillToGround(positions);
         interactFiller.Fill(spawnSetting, positions, sizeMap);

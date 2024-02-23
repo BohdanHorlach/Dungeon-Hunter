@@ -10,7 +10,7 @@ public class HealthHandler : MonoBehaviour
     private float helth;
 
 
-    public event Action DamageReceived;
+    public event Action HealthChanged;
     public event Action Death;
     public float CurrentHelth { get { return helth; } }
     public float MaxHealthValue { get { return maxHealthValue; } }
@@ -27,9 +27,16 @@ public class HealthHandler : MonoBehaviour
     {
         helth = Mathf.Clamp(helth - damage, 0, maxHealthValue);
 
-        DamageReceived?.Invoke();
+        HealthChanged?.Invoke();
 
         if (helth == 0)
             Death?.Invoke();
+    }
+
+
+    public void Revive()
+    {
+        helth = maxHealthValue;
+        HealthChanged?.Invoke();
     }
 }

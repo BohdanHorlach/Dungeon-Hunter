@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Normal Mode
   m_EditorClassIdentifier: 
   sizeDungeon: 2
-  countAreaIteration: 50
-  countStepFromArea: 30
+  countAreaIteration: 60
+  countStepFromArea: 60
   maxCountOfCorridors: 3
-  lengthCorridors: 25
+  lengthCorridors: 35
   widthCorridors: 2
   isGenerationAlongEdges: 1
   interactSpawnSettings:

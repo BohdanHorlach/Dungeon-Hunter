@@ -62,13 +62,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void StopMove()
+    public void StopMove()
     {
         isMoved = false;
     }
 
 
-    private void KeepMoveing()
+    public void KeepMoveing()
     {
         isMoved = true;
     }

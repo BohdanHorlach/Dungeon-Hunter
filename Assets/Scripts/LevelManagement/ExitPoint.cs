@@ -1,16 +1,32 @@
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class ExitPoint : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private ExpHandler playerExpHandler;
+    [SerializeField] private PlayerAnimatorHandler playerAnimator;
     [SerializeField] private GameplayStatistics gameplayStatistics;
     [SerializeField] private GameModeSwitch mainMenu;
     [SerializeField] private KeyCode backToMenu;
 
 
     private bool playerIsNear = false;
+
+
+    public UnityEvent PlayerReturnedToTheMenu;
+
+
+    private void OnEnable()
+    {
+        playerAnimator.GameOver += GoBackToMenu;
+    }
+
+
+    private void OnDisable()
+    {
+        playerAnimator.GameOver -= GoBackToMenu;
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,7 +64,9 @@ public class ExitPoint : MonoBehaviour
         gameplayStatistics.SetBestTry(playerExpHandler.Exp);
         gameplayStatistics.AddToTotal(playerExpHandler.Exp);
         playerExpHandler.ResetExp();
+        animator.SetBool("isShowButton", false);
 
+        PlayerReturnedToTheMenu.Invoke();
         mainMenu.BackToMainMenu();
     }
 }

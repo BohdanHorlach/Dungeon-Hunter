@@ -18,13 +18,14 @@ public class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        healthHandler.DamageReceived += SetHealth;
+        healthHandler.HealthChanged += SetHealth;
+        SetHealth();
     }
 
 
     private void OnDisable()
     {
-        healthHandler.DamageReceived -= SetHealth;
+        healthHandler.HealthChanged -= SetHealth;
     }
 
 
